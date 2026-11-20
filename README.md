@@ -21,8 +21,7 @@
     *   Proved that `GetObject` is **Allowed**.
     *   Proved that `DeleteBucket` is **Denied**.
 
-**Policy JSON:** [View the JSON file here](./Bincom-S3-ReadOnly-Scoped.json)
-
+Policy JSON: [View the JSON file here](./Bincom-S3-ReadOnly-Scoped.json)
 ![Custom IAM Policy](./custom-iam-policy.png)
 ![Policy Simulator Allowed](./policy-simulator-allowed.png)
 ![Policy Simulator Denied](./policy-simulator-denied.png)
