@@ -21,7 +21,36 @@
     *   Proved that `GetObject` is **Allowed**.
     *   Proved that `DeleteBucket` is **Denied**.
 
-Policy JSON: [View the JSON file here](./Bincom-S3-ReadOnly-Scoped.json)
+**Policy JSON:** [View the JSON file here](./Bincom-S3-ReadOnly-Scoped.json)
+
+Here is the raw JSON:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowReadOnlySpecificBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bincom-onboarding-oluwatobi-*",
+        "arn:aws:s3:::bincom-onboarding-oluwatobi-*/*"
+      ]
+    },
+    {
+      "Sid": "DenyDeleteAndPolicyChanges",
+      "Effect": "Deny",
+      "Action": [
+        "s3:DeleteBucket",
+        "s3:PutBucketPolicy"
+      ],
+      "Resource": "arn:aws:s3:::bincom-onboarding-oluwatobi-*"
+    }
+  ]
+}
 ![Custom IAM Policy](./custom-iam-policy.png)
 ![Policy Simulator Allowed](./policy-simulator-allowed.png)
 ![Policy Simulator Denied](./policy-simulator-denied.png)
