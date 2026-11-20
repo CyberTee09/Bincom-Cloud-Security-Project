@@ -51,3 +51,33 @@ Here is the raw JSON:
     }
   ]
 }
+```
+https://./custom-iam-policy.png
+https://./policy-simulator-allowed.png
+https://./policy-simulator-denied.png
+
+3. S3 Bucket Hardening & Public Access Prevention
+Bucket Creation: Created bincom-onboarding-oluwatobi-2026.
+
+Security Settings: Enabled "Block All Public Access" (all 4 checkboxes), Default Encryption (SSE-S3), and Bucket Versioning.
+
+Empirical Verification: Uploaded a test file (security-baseline.txt) and executed a curl -I request against the Object URL. The request returned HTTP/1.1 403 Forbidden, proving public access is securely blocked.
+
+https://./curl-403.png
+
+4. Control-Plane Audit Log Inspection (AWS CloudTrail)
+Inspected the free CloudTrail Event History to verify the control-plane actions taken during this project. The JSON audit records show the identity ARN, source IP address, and timestamps for all configurations.
+
+https://./cloudtrail-createbucket.png
+https://./cloudtrail-createuser.png
+https://./cloudtrail-putbucketencryption.png
+https://./cloudtrail-putbucketversioning.png
+
+5. Cleanup Verification
+Deleted the test security-baseline.txt object (including all hidden versions).
+
+Deleted the bincom-onboarding-oluwatobi-2026 S3 bucket.
+
+Account remains clean with an estimated spend of $0.00.
+
+
