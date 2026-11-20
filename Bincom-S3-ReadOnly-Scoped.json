@@ -1,0 +1,26 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowReadOnlySpecificBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bincom-onboarding-oluwatobi-*",
+        "arn:aws:s3:::bincom-onboarding-oluwatobi-*/*"
+      ]
+    },
+    {
+      "Sid": "DenyDeleteAndPolicyChanges",
+      "Effect": "Deny",
+      "Action": [
+        "s3:DeleteBucket",
+        "s3:PutBucketPolicy"
+      ],
+      "Resource": "arn:aws:s3:::bincom-onboarding-oluwatobi-*"
+    }
+  ]
+}
